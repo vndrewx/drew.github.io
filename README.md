@@ -1,17 +1,17 @@
 
 
-<h1>Hi, I'm Karylle!</h1>
+<h1>Hi, I'm Andrew</h1>
 
-### Bachelor of Science in Information Technology
+### DIPLOMA OF INFORMATION TECHNOLOGY
 
 
 ### Contact
 
-Email:cabridokarylle@gmail.com
+Email:andrewguevarra80@gmail.com
 
-Phone: 0995-145-4499
+Phone: 0995-477-7475
 
-Location: Brgy. San Agustin, Alaminos, Laguna.
+Location: Brgy. St. Elena Sto.tomas Batangas
 
 
 ### Lorem Ipsum
