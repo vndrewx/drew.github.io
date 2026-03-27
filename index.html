@@ -6,100 +6,150 @@
   <title>Andrew Guevarra | Portfolio</title>
 
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
     body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      margin: 0;
-      background-color: #0f172a;
-      color: #f1f5f9;
-      line-height: 1.6;
+      background: #0f172a;
+      color: #e2e8f0;
     }
 
-    header {
-      padding: 60px 20px;
-      background-color: #1e293b;
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* LEFT SIDE */
+    .sidebar {
+      width: 35%;
+      background: #0b1220;
+      padding: 40px;
       text-align: center;
+      border-right: 1px solid #1e293b;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    header h1 span {
-      color: #38bdf8;
-    }
-
-    header p {
-      margin-top: 10px;
-      font-size: 1.1rem;
-      color: #cbd5f5;
-    }
-
-    section {
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    h2 {
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #1e293b;
       margin-bottom: 20px;
-      color: #38bdf8;
     }
 
-    .card {
-      background-color: #1e293b;
-      margin: 20px auto;
-      padding: 25px;
-      border-radius: 12px;
-      max-width: 500px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    .name {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 5px;
     }
 
-    a {
+    .course {
+      color: #94a3b8;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border: 1px solid #38bdf8;
+      border-radius: 25px;
       color: #38bdf8;
       text-decoration: none;
+      margin-bottom: 30px;
+      transition: 0.3s;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .btn:hover {
+      background: #38bdf8;
+      color: #0f172a;
     }
 
-    footer {
-      padding: 20px;
-      background-color: #020617;
-      text-align: center;
+    .contact {
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .contact h3 {
+      margin-bottom: 15px;
+      border-bottom: 1px solid #1e293b;
+      padding-bottom: 5px;
+    }
+
+    .contact p {
+      margin: 10px 0;
       font-size: 14px;
-      color: #94a3b8;
+    }
+
+    /* RIGHT SIDE */
+    .main {
+      width: 65%;
+      padding: 60px;
+    }
+
+    .main h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .main p {
+      line-height: 1.8;
+      color: #cbd5f5;
+      max-width: 700px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .sidebar, .main {
+        width: 100%;
+      }
+
+      .main {
+        padding: 40px 20px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Hello, I am <span>Andrew Guevarra</span></h1>
-    <p>Diploma in Information Technology</p>
-  </header>
+  <div class="container">
 
-  <section>
-    <h2>About Me</h2>
-    <div class="card">
+    <!-- LEFT -->
+    <div class="sidebar">
+      <img src="your-image.jpg" alt="Profile" class="profile-img">
+
+      <div class="name">Andrew Guevarra</div>
+      <div class="course">Diploma in Information Technology (DIT)</div>
+
+      <a href="#" class="btn">GitHub Profile</a>
+
+      <div class="contact">
+        <h3>Contact Information</h3>
+        <p><strong>Email:</strong><br> Andrewguevarra80@email.com</p>
+        <p><strong>Phone:</strong><br> 0995-140-3391</p>
+        <p><strong>Location:</strong><br> Philippines</p>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="main">
+      <h1>Hello!</h1>
       <p>
-        I am a Diploma in Information Technology student with a strong interest in 
-        software development, networking, and building innovative technology solutions. 
-        I am continuously developing my skills and exploring new tools to enhance my expertise in the IT field.
+        I am Andrew, a Diploma in Information Technology student with a strong interest 
+        in web development, programming, and building efficient and user-friendly applications. 
+        I am passionate about learning modern technologies and applying my knowledge to 
+        practical projects, with a focus on continuous improvement and innovation.
       </p>
     </div>
-  </section>
 
-  <section>
-    <h2>Contact</h2>
-    <div class="card">
-      <p>Email: <a href="mailto:Andrewgueavarra80@email.com">Andrewgueavarra80@email.com</a></p>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2026 Andrew Guevarra. All rights reserved.</p>
-  </footer>
+  </div>
 
 </body>
 </html>
