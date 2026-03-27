@@ -3,36 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DREW</title>
+  <title>Andrew Guevarra | Portfolio</title>
 
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Segoe UI", Arial, sans-serif;
       margin: 0;
-      background: #0f172a;
-      color: white;
-      text-align: center;
+      background-color: #0f172a;
+      color: #f1f5f9;
+      line-height: 1.6;
     }
 
     header {
-      padding: 50px 20px;
-      background: #1e293b;
+      padding: 60px 20px;
+      background-color: #1e293b;
+      text-align: center;
     }
 
-    h1 span {
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header h1 span {
       color: #38bdf8;
     }
 
+    header p {
+      margin-top: 10px;
+      font-size: 1.1rem;
+      color: #cbd5f5;
+    }
+
     section {
-      padding: 40px 20px;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #38bdf8;
     }
 
     .card {
-      background: #1e293b;
-      margin: 15px auto;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 400px;
+      background-color: #1e293b;
+      margin: 20px auto;
+      padding: 25px;
+      border-radius: 12px;
+      max-width: 500px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
     a {
@@ -40,34 +59,47 @@
       text-decoration: none;
     }
 
+    a:hover {
+      text-decoration: underline;
+    }
+
     footer {
       padding: 20px;
-      background: #020617;
+      background-color: #020617;
+      text-align: center;
       font-size: 14px;
+      color: #94a3b8;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Hello, I'm <span>Andrew</span></h1>
-    <p>Diploma of Information Technology </p>
+    <h1>Hello, I am <span>Andrew Guevarra</span></h1>
+    <p>Diploma in Information Technology</p>
   </header>
 
   <section>
     <h2>About Me</h2>
-    <p>
-     DIT student passionate about coding, networking, and building innovative tech solutions.
-    </p>
+    <div class="card">
+      <p>
+        I am a Diploma in Information Technology student with a strong interest in 
+        software development, networking, and building innovative technology solutions. 
+        I am continuously developing my skills and exploring new tools to enhance my expertise in the IT field.
+      </p>
+    </div>
   </section>
-
-  
 
   <section>
     <h2>Contact</h2>
-    <p>Email: Andrewgueavarra80@email.com</p>
+    <div class="card">
+      <p>Email: <a href="mailto:Andrewgueavarra80@email.com">Andrewgueavarra80@email.com</a></p>
+    </div>
   </section>
 
+  <footer>
+    <p>© 2026 Andrew Guevarra. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
