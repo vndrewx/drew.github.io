@@ -139,10 +139,27 @@ footer strong{color:var(--orange)}
 @media(max-width:800px){
   .container{width:min(calc(100% - 30px),var(--max))}
   .nav{height:66px}
-  .menu-toggle{display:block}
-  .nav-links{display:none;position:absolute;top:calc(66px + env(safe-area-inset-top));left:15px;right:15px;padding:12px;background:rgba(17,19,22,.98);border:1px solid var(--line);border-radius:15px;box-shadow:0 18px 45px rgba(0,0,0,.4);grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
-  .nav-links.open{display:grid}
-  .nav-links a{text-align:center;padding:11px 5px;font-size:11px}
+  .menu-toggle{display:block;flex:0 0 43px}
+  .nav-links{max-height:calc(100dvh - 100px);overflow-y:auto;overscroll-behavior:contain}
+  .nav-links{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;
+    position:absolute;top:calc(66px + env(safe-area-inset-top));left:15px;right:15px;
+    padding:10px;background:rgba(17,19,22,.98);border:1px solid #34363c;
+    border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,.48);
+    backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+    opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px);
+    transition:opacity .2s ease,transform .2s ease,visibility .2s ease;
+  }
+  .nav-links.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+  .nav-links a{
+    display:flex;align-items:center;justify-content:flex-start;text-align:left;
+    min-height:45px;padding:11px 13px;font-size:12px;border:1px solid transparent;
+    border-radius:10px;background:rgba(255,255,255,.025);
+  }
+  .nav-links a:hover,.nav-links a.active{
+    color:var(--orange);background:rgba(255,118,47,.11);
+    border-color:rgba(255,118,47,.22)
+  }
   .hero{min-height:460px;padding:70px 0}
   .hero:before{right:-10%;top:17%;width:55vw}
   .hero:after{right:0;top:29%;width:40vw}
@@ -156,7 +173,10 @@ footer strong{color:var(--orange)}
   html{scroll-padding-top:76px}
   .container{width:calc(100% - 24px)}
   .nav{height:62px}
-  .nav-links{top:calc(62px + env(safe-area-inset-top));left:12px;right:12px}
+  .nav-links{top:calc(62px + env(safe-area-inset-top));left:12px;right:12px;padding:9px;gap:6px}
+  .nav-links a{min-height:44px;padding:10px 11px;font-size:11px}
+  .menu-toggle{display:grid;place-items:center;border-color:#3a3c42;background:#15171a;transition:border-color .2s,color .2s,background .2s}
+  .menu-toggle:hover,.menu-toggle[aria-expanded="true"]{border-color:var(--orange);color:var(--orange);background:rgba(255,118,47,.08)}
   .brand{font-size:24px}
   .hero{min-height:auto;padding:64px 0 58px}
   .hero-name-row{gap:13px}
@@ -195,11 +215,60 @@ footer strong{color:var(--orange)}
   .contact-intro{font-size:12px}
   .contact-form button{width:100%}
   .footer-row{flex-direction:column;text-align:center}
-  .mobile-cta{display:flex;position:fixed;z-index:900;bottom:calc(10px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100% - 24px);padding:6px;background:rgba(17,19,22,.92);border:1px solid #3a3c42;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.4);backdrop-filter:blur(15px);gap:5px}
-  .mobile-cta a{font-size:10px;font-weight:700;padding:9px 12px;border-radius:9px;color:#d7d8dc}
-  .mobile-cta a:first-child{background:var(--orange);color:#15100d}
-  footer{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
+  /* No floating bottom buttons: keep mobile content clear and easy to use. */
+  .mobile-cta{display:none!important}
+  footer{padding-bottom:calc(23px + env(safe-area-inset-bottom))}
 }
+/* Responsive refinements */
+@media(max-width:800px){
+  .nav-links a{min-height:42px;display:flex;align-items:center;justify-content:center}
+  .hero-content{width:100%}
+  .hero-name-row{align-items:center}
+  .hero-name-row h1{overflow-wrap:anywhere}
+  .actions{gap:10px}
+  .actions .btn{flex:1 1 180px}
+  .panel,.project,.skill-card{min-width:0}
+  .contact-form button{min-height:48px}
+}
+@media(max-width:520px){
+  .container{width:calc(100% - 28px)}
+  .nav{gap:10px}
+  .brand{font-size:23px}
+  .menu-toggle{flex:0 0 42px;width:42px;height:42px}
+  .nav-links{grid-template-columns:repeat(2,minmax(0,1fr));max-height:calc(100dvh - 95px);overflow-y:auto}
+  .hero{padding:48px 0 42px}
+  .hero-name-row{gap:11px}
+  .hero-monogram{width:54px;letter-spacing:-1px}
+  .hero-monogram span:first-child{font-size:21px}
+  .hero-monogram span:last-child{font-size:12px}
+  .hero-name-row h1{font-size:clamp(29px,8.3vw,40px);line-height:1;letter-spacing:-.065em}
+  .kicker{font-size:9px;letter-spacing:1.6px}
+  .hero h2{font-size:15px}
+  .hero p{font-size:13px;line-height:1.75}
+  .actions{display:grid;grid-template-columns:1fr;width:100%}
+  .actions .btn{width:100%;min-height:48px;font-size:12px}
+  .panel{padding:17px}
+  .section-title h2{font-size:13px;letter-spacing:.6px}
+  .facts{grid-template-columns:1fr 1fr}
+  .contact-side{grid-template-columns:1fr;gap:14px}
+  .contact-side .btn{width:100%;grid-column:auto}
+  .skill-grid{grid-template-columns:1fr}
+  .projects{grid-template-columns:1fr}
+  .project{padding:19px}
+  .contact-grid{gap:20px}
+  .contact-intro h3{font-size:23px}
+  .contact-form input,.contact-form textarea{font-size:16px;padding:13px}
+  .contact-form button{width:100%}
+  .footer-row{gap:6px;font-size:10px}
+}
+@media(max-width:360px){
+  .hero-name-row{align-items:flex-start}
+  .hero-monogram{width:46px}
+  .hero-name-row h1{font-size:27px}
+  .facts{grid-template-columns:1fr}
+  .nav-links a{font-size:12px}
+}
+
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
 }
@@ -224,7 +293,6 @@ footer strong{color:var(--orange)}
 <main class="container">
   <section class="hero" id="home">
     <div class="hero-content">
-      <div class="kicker">Personal Portfolio · 2026</div>
       <div class="hero-name-row">
         <div class="hero-monogram" aria-label="AMG logo"><span>A</span><span>MG</span></div>
         <h1>Andrew M.<span>Guevarra</span></h1>
@@ -342,11 +410,6 @@ footer strong{color:var(--orange)}
   </section>
 </main>
 
-<div class="mobile-cta" aria-label="Quick navigation">
-  <a href="#projects">Projects ↗</a>
-  <a href="#contact">Contact</a>
-</div>
-
 <footer><div class="container footer-row"><p>© 2026 <strong>Andrew M. Guevarra</strong></p><p>Designed with purpose · Built for growth</p></div></footer>
 
 <script>
@@ -359,6 +422,25 @@ menuToggle.addEventListener('click', () => {
   menuToggle.setAttribute('aria-expanded', String(isOpen));
   menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
   menuToggle.textContent = isOpen ? '×' : '☰';
+});
+
+document.addEventListener('click', event => {
+  if (!event.target.closest('.nav')) {
+    navLinks.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Open navigation menu');
+    menuToggle.textContent = '☰';
+  }
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    navLinks.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Open navigation menu');
+    menuToggle.textContent = '☰';
+    menuToggle.focus();
+  }
 });
 
 links.forEach(link => {
