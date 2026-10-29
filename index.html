@@ -216,11 +216,11 @@ footer strong{color:var(--orange)}
   .contact-intro{font-size:12px}
   .contact-form button{width:100%}
   .footer-row{flex-direction:column;text-align:center}
-  /* No floating bottom buttons: keep mobile content clear and easy to use. */
+ 
   .mobile-cta{display:none!important}
   footer{padding-bottom:calc(23px + env(safe-area-inset-bottom))}
 }
-/* Responsive refinements */
+
 @media(max-width:800px){
   .nav-links a{min-height:42px;display:flex;align-items:center;justify-content:center}
   .hero-content{width:100%}
@@ -343,6 +343,282 @@ footer {
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
 }
+
+header {
+  width: 100%;
+}
+
+.brand {
+  flex-shrink: 0;
+}
+
+.nav-links a {
+  white-space: nowrap;
+}
+
+
+@media (max-width: 800px) {
+
+  .menu-toggle {
+    display: none !important;
+  }
+
+  .nav-links,
+  .nav-links.open {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    gap: 0;
+    width: 100%;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    padding: 7px 4px calc(7px + env(safe-area-inset-bottom, 0px));
+    border: 0;
+    border-top: 1px solid #34363c;
+    border-radius: 0;
+    background: rgba(14, 15, 18, 0.97);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    transition: background 0.2s ease;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-links a {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-width: 0;
+    min-height: 48px;
+    padding: 5px clamp(5px, 1.6vw, 12px);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+    color: #aeb1b9;
+    font-size: clamp(9px, 2.5vw, 11px);
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .nav-links a::before {
+    display: block;
+    color: currentColor;
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .nav-links a[href="#home"]::before { content: "⌂"; }
+  .nav-links a[href="#about"]::before { content: "◉"; }
+  .nav-links a[href="#education"]::before { content: "▤"; }
+  .nav-links a[href="#skills"]::before { content: "✦"; }
+  .nav-links a[href="#projects"]::before { content: "▧"; }
+  .nav-links a[href="#contact"]::before { content: "✉"; }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--orange);
+    background: rgba(255, 118, 47, 0.1);
+    border-color: rgba(255, 118, 47, 0.16);
+  }
+
+  body {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  }
+
+  html {
+    scroll-padding-top: 82px;
+    scroll-padding-bottom: 100px;
+  }
+
+  .section {
+    scroll-margin-top: 82px;
+    scroll-margin-bottom: 95px;
+  }
+
+  footer {
+    padding-bottom: calc(23px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (max-width: 380px) {
+  .nav-links {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .nav-links a {
+    padding-left: 3px;
+    padding-right: 3px;
+    font-size: 9px;
+  }
+
+  .nav-links a::before {
+    font-size: 15px;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-links,
+  .nav-links a,
+  .nav-links a::before {
+    transition: none !important;
+  }
+}
+
+
+
+
+:root { --amg-glow: rgba(255,118,47,.22); }
+
+
+.btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+.btn.primary {
+  border-color: transparent;
+  background: linear-gradient(115deg, #ff762f 0%, #ff9b62 48%, #ff762f 100%);
+  background-size: 220% 100%;
+  box-shadow: 0 5px 22px rgba(255,118,47,.12);
+  transition: background-position .45s ease, transform .25s ease, box-shadow .25s ease;
+}
+.btn.primary::after {
+  content: "";
+  position: absolute;
+  inset: -45% auto -45% -55%;
+  width: 34%;
+  transform: rotate(22deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.65), transparent);
+  transition: left .65s ease;
+  z-index: -1;
+}
+.btn.primary:hover {
+  background-position: 100% 0;
+  box-shadow: 0 8px 30px rgba(255,118,47,.28);
+}
+.btn.primary:hover::after { left: 130%; }
+.btn:focus-visible, .nav-links a:focus-visible, .project-link:focus-visible {
+  outline: 2px solid var(--orange2);
+  outline-offset: 4px;
+}
+
+.project, .skill-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+}
+.project::before, .skill-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(280px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(255,118,47,.15), transparent 72%);
+  transition: opacity .25s ease;
+}
+.project:hover::before, .skill-card:hover::before { opacity: 1; }
+.project:hover, .skill-card:hover {
+  border-color: rgba(255,145,91,.78);
+  box-shadow: 0 14px 38px rgba(0,0,0,.25), 0 0 24px rgba(255,118,47,.07);
+}
+
+
+.hero:before { animation: amg-orbit 18s ease-in-out infinite alternate; }
+.hero:after { animation: amg-orbit-two 22s ease-in-out infinite alternate; }
+.hero-content { animation: amg-rise .75s cubic-bezier(.2,.75,.25,1) both; }
+.hero-monogram { transition: transform .3s ease, box-shadow .3s ease; }
+.hero-monogram:hover { transform: translateY(-3px) rotate(-2deg); box-shadow: 0 0 0 5px rgba(255,118,47,.08), 0 0 36px rgba(255,118,47,.18); }
+.nav-links a { position: relative; }
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 12px; right: 12px; bottom: 5px;
+  height: 1px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .22s ease;
+}
+.nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+@keyframes amg-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes amg-orbit {
+  from { transform: rotate(-16deg) translate3d(0,0,0); }
+  to { transform: rotate(-5deg) translate3d(-8px,10px,0); }
+}
+@keyframes amg-orbit-two {
+  from { transform: rotate(19deg) translate3d(0,0,0); }
+  to { transform: rotate(28deg) translate3d(7px,-8px,0); }
+}
+@media (hover: none) {
+  .project::before, .skill-card::before { display: none; }
+  .btn.primary::after { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+
+
+
+html.reveal-ready .reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .58s ease, transform .58s cubic-bezier(.2,.7,.2,1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+html.reveal-ready .reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  will-change: auto;
+}
+.project, .skill-card, .timeline-item, .panel {
+  transition-timing-function: cubic-bezier(.2,.7,.2,1);
+}
+.nav-links a:active { transform: translateY(1px); }
+.btn, .project-link, .nav-links a { touch-action: manipulation; }
+@media (prefers-reduced-motion: reduce) {
+  html.reveal-ready .reveal-on-scroll,
+  html.reveal-ready .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -393,13 +669,12 @@ footer {
           </div>
         </div>
         <aside class="contact-side">
-          <div><div class="contact-label">EMAIL</div><a class="contact-value" href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a></div>
+          <div><div class="contact-label">EMAIL</div><a class="contact-value" href="mailto:andrewguevarra80@gmail.com">andrewguevarra80@gmail.com</a></div>
           <div><div class="contact-label">LOCATION</div><p class="contact-value">Santo Tomas, Batangas, Philippines</p></div>
           <div><div class="contact-label">CURRENT ROLE</div><p class="contact-value">IT Student · Aspiring Developer</p></div>
           <div class="socials">
             <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-            <a href="mailto:YOUR_EMAIL@example.com" aria-label="Email">✉</a>
+            <a href="mailto:andriegmail.com" aria-label="Email">✉</a>
           </div>
           <a class="btn secondary" href="#contact">Let's Connect ↗</a>
         </aside>
@@ -412,7 +687,7 @@ footer {
       <div class="panel">
         <div class="section-title"><span class="section-num">02 /</span><h2>Education</h2></div>
         <div class="timeline">
-          <div class="timeline-item"><h3>PUP – Sto. Tomas Campus</h3><p>Diploma in Information Technology</p><div class="year">2023 – Present · Please verify dates</div></div>
+          <div class="timeline-item"><h3>PUP – Sto. Tomas Campus</h3><p>Diploma in Information Technology</p><div class="year">2023 – Present</div></div>
           <div class="timeline-item"><h3>Jehovah Shammah Christian Community School Inc.</h3><p>Senior High School</p><div class="year">2019 – 2023</div></div>
           <div class="timeline-item"><h3>Bitin Integrated National High School</h3><p>Junior High School</p><div class="year">2015 – 2019</div></div>
           <div class="timeline-item"><h3>Santa Elena Elementary School</h3><p>Elementary Education</p><div class="year">2009 – 2015</div></div>
@@ -525,35 +800,69 @@ links.forEach(link => {
   });
 });
 
-const sections = document.querySelectorAll('main section[id]');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      links.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
-      });
-    }
-  });
-}, {rootMargin: '-25% 0px -60% 0px'});
 
-sections.forEach(section => observer.observe(section));
+const sections = document.querySelectorAll('main section[id]');
+if ('IntersectionObserver' in window) {
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-25% 0px -60% 0px', threshold: 0 });
+  sections.forEach(section => sectionObserver.observe(section));
+
+
+  const revealTargets = document.querySelectorAll(
+    '.section-title, .panel, .timeline-item, .fact, .skill-card, .project, .contact-intro, .contact-form'
+  );
+  document.documentElement.classList.add('reveal-ready');
+  revealTargets.forEach((element, index) => {
+    element.classList.add('reveal-on-scroll');
+   
+    const siblingIndex = element.matches('.skill-card, .project, .timeline-item, .fact')
+      ? Array.from(element.parentElement.children).filter(node => node.matches(element.matches('.skill-card') ? '.skill-card' : element.matches('.project') ? '.project' : element.matches('.timeline-item') ? '.timeline-item' : '.fact')).indexOf(element)
+      : 0;
+    element.style.setProperty('--reveal-delay', `${Math.min(Math.max(siblingIndex, 0) * 75, 225)}ms`);
+  });
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -7% 0px', threshold: 0.08 });
+  revealTargets.forEach(element => revealObserver.observe(element));
+} else {
+  
+  document.querySelectorAll('.section-title, .panel, .timeline-item, .fact, .skill-card, .project, .contact-intro, .contact-form')
+    .forEach(element => element.classList.add('is-visible'));
+}
 
 document.getElementById('contactForm').addEventListener('submit', event => {
   event.preventDefault();
   const name = document.getElementById('senderName').value.trim();
   const email = document.getElementById('senderEmail').value.trim();
   const message = document.getElementById('senderMessage').value.trim();
-  const recipient = 'YOUR_EMAIL@example.com';
-
-  if (recipient === 'YOUR_EMAIL@example.com') {
-    alert('Please replace YOUR_EMAIL@example.com in the HTML code with your real email address first.');
-    return;
-  }
+  const recipient = 'andrewguevarra80@gmail.com';
 
   const subject = encodeURIComponent('Portfolio inquiry from ' + name);
   const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
   window.location.href = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
 });
+
+
+document.querySelectorAll('.project, .skill-card').forEach(card => {
+  card.addEventListener('pointermove', event => {
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--spot-x', `${event.clientX - rect.left}px`);
+    card.style.setProperty('--spot-y', `${event.clientY - rect.top}px`);
+  });
+});
+
 </script>
 </body>
 </html>
