@@ -101,14 +101,6 @@ footer{border-top:1px solid #24262b;margin-top:35px;padding:22px 0 28px;color:va
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
 
-
-
-/* =========================================================
-   AMG PORTFOLIO — VISUAL DESIGN UPGRADE
-   Inspired by modern portfolio layouts and motion-led UI.
-   Existing content and links are intentionally unchanged.
-   ========================================================= */
-
 :root{
   --bg:#08090b;
   --surface:#101216;
@@ -400,9 +392,6 @@ footer{
   .hero:before,.hero:after{animation:none}
 }
 
-
-
-/* Touch-friendly project cards: no hover required on phones */
 .project{
   -webkit-tap-highlight-color:transparent;
   touch-action:pan-y;
@@ -457,8 +446,6 @@ footer{
 }
 
 
-
-/* PROJECT SHOWCASE — image-led editorial cards */
 .projects{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
@@ -578,6 +565,50 @@ footer{
   .project-preview{aspect-ratio:4/3}
 }
 
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+@media (max-width: 767px) {
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+
+    main,
+    .section,
+    .panel,
+    .projects,
+    .project,
+    .project-preview {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .projects {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .project-preview img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .hero:before,
+    .hero:after {
+        pointer-events: none;
+    }
+}
+
+
 </style>
 </head>
 <body>
@@ -676,11 +707,14 @@ footer{
       <div class="projects">
         <article class="project">
           <div class="project-preview">
-            <img src="<img src="digimon.png" alt="Digimon World">" alt="Digimon World digital adventure scene" loading="lazy">
-            <span class="project-preview-year">2026</span>
-            <span class="project-preview-label">Digital World</span>
-            <span class="project-preview-arrow" aria-hidden="true">↗</span>
-          </div>
+    <img src="digimon.png"
+         alt="Digimon World"
+         loading="eager">
+
+    <span class="project-preview-year">2026</span>
+    <span class="project-preview-label">Digital World</span>
+    <span class="project-preview-arrow" aria-hidden="true">↗</span>
+</div>
           <div class="project-no">PROJECT 01</div>
           <h3>Digimon World</h3>
           <p>An interactive Digimon project where visitors can explore Digimon and browse different evolution levels in a digital-world inspired interface.</p>
@@ -689,11 +723,14 @@ footer{
         </article>
         <article class="project">
           <div class="project-preview">
-            <img src="<img src="iphone15.png" alt="iPhone 15 Pro">" alt="iPhone 15 Pro in natural titanium, front and back view" loading="lazy">
-            <span class="project-preview-year">2026</span>
-            <span class="project-preview-label">iPhone Experience</span>
-            <span class="project-preview-arrow" aria-hidden="true">↗</span>
-          </div>
+    <img src="iphone15.png"
+         alt="iPhone 15 Pro"
+         loading="eager">
+
+    <span class="project-preview-year">2026</span>
+    <span class="project-preview-label">iPhone Experience</span>
+    <span class="project-preview-arrow" aria-hidden="true">↗</span>
+</div>
           <div class="project-no">PROJECT 02</div>
           <h3>iPhone Website</h3>
           <p>A responsive iPhone-themed web project presented as a live website, designed to open directly in the browser rather than the GitHub repository.</p>
